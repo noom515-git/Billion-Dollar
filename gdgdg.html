@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>first website</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Example Website</title>
+  <meta name="description" content="A simple example website template in pure HTML/CSS." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e7edf7;
+      --muted:#a8b3c7;
+      --border:rgba(255,255,255,.12);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(79,140,255,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(0,214,170,.25), transparent 55%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 16px;border-radius:12px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06); color:var(--text);
+      gap:10px; cursor:pointer; transition:.2s transform,.2s background;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    .btn.primary{background:linear-gradient(135deg, rgba(79,140,255,.95), rgba(0,214,170,.85)); border:none}
+    .btn.primary:hover{filter:brightness(1.03)}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 12px;border:1px solid var(--border);border-radius:999px;
+      background:rgba(255,255,255,.06); color:var(--muted); font-size:13px;
+    }
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(11,18,32,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:70px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(79,140,255,1), rgba(0,214,170,1));
+      box-shadow:var(--shadow);
+    }
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{color:var(--muted);font-size:14px}
+    .navlinks a:hover{color:var(--text)}
+    .menuBtn{display:none}
+    .hero{padding:56px 0 22px}
+    .heroGrid{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:stretch;
+    }
+    .card{
+      background:rgba(17,26,46,.72);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .heroCard{padding:26px}
+    h1{margin:14px 0 12px;font-size:44px;line-height:1.1;letter-spacing:-.02em}
+    p{margin:0;color:var(--muted)}
+    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .miniStats{
+      padding:18px;
+      display:grid;gap:12px;
+    }
+    .stat{
+      padding:14px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+    }
+    .stat b{display:block;font-size:18px;margin-bottom:2px}
+    .section{padding:34px 0}
+    .sectionTitle{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:14px
+    }
+    .sectionTitle h2{margin:0;font-size:26px}
+    .grid3{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px}
+    .feature{padding:18px}
+    .feature h3{margin:10px 0 6px;font-size:18px}
+    .icon{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      font-size:18px;
+    }
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .quote{padding:18px}
+    .quote .who{margin-top:10px;color:var(--muted);font-size:14px}
+    form{display:grid;gap:10px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px;resize:vertical}
+    input:focus, textarea:focus{border-color:rgba(79,140,255,.7)}
+    footer{padding:26px 0;color:var(--muted);border-top:1px solid var(--border);margin-top:26px}
+    .footerRow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    /* Responsive */
+    @media (max-width: 900px){
+      h1{font-size:36px}
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .menuBtn{display:inline-flex}
+      .navlinks{display:none}
+      .navlinks.open{
+        display:flex;flex-direction:column;align-items:flex-start;
+        position:absolute;top:70px;left:0;right:0;
+        padding:14px 20px;background:rgba(11,18,32,.92);
+        border-bottom:1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        <span>ExampleSite</span>
+      </a>
+
+      <nav class="navlinks" id="navlinks">
+        <a href="#features">Features</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#contact">Get Started</a>
+      </nav>
+
+      <button class="btn menuBtn" id="menuBtn" type="button" aria-label="Open menu">
+        ☰ Menu
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="card heroCard">
+          <span class="pill">✨ Pure HTML + CSS • Single file</span>
+          <h1>Build a clean example website in minutes.</h1>
+          <p>
+            This is a simple, responsive template you can copy and edit.
+            It includes a navbar, hero section, features, testimonials, and a contact form.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#features">Explore Features →</a>
+            <a class="btn" href="#contact">Contact Us</a>
+          </div>
+        </div>
+
+        <aside class="card miniStats">
+          <div class="stat">
+            <b>Fast to edit</b>
+            <span>Change text, colors, sections easily.</span>
+          </div>
+          <div class="stat">
+            <b>Mobile friendly</b>
+            <span>Looks good on phones, tablets, desktops.</span>
+          </div>
+          <div class="stat">
+            <b>No frameworks</b>
+            <span>Just HTML/CSS + a tiny JS menu.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Features</h2>
+          <span class="pill">⚡ Simple & modern</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card feature">
+            <div class="icon">🧱</div>
+            <h3>Reusable sections</h3>
+            <p>Copy/paste cards and sections to create new pages quickly.</p>
+          </div>
+
+          <div class="card feature">
+            <div class="icon">📱</div>
+            <h3>Responsive layout</h3>
+            <p>The grid adapts automatically for smaller screens.</p>
+          </div>
+
+          <div class="card feature">
+            <div class="icon">🎨</div>
+            <h3>Easy styling</h3>
+            <p>Edit the CSS variables at the top to change the look.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Testimonials</h2>
+          <span class="pill">💬 What users say</span>
+        </div>
+
+        <div class="testimonials">
+          <div class="card quote">
+            <p>“I copied this template and had a landing page ready in 10 minutes.”</p>
+            <div class="who">— Noor, Student</div>
+          </div>
+          <div class="card quote">
+            <p>“Looks clean on mobile and desktop, and I didn’t need any libraries.”</p>
+            <div class="who">— Sara, Developer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>Contact</h2>
+          <span class="pill">✉️ Send a message</span>
+        </div>
+
+        <div class="card" style="padding:18px">
+          <form onsubmit="return handleSubmit(event)">
+            <input name="name" placeholder="Your name" required />
+            <input name="email" type="email" placeholder="Email address" required />
+            <textarea name="message" placeholder="Your message..." required></textarea>
+            <button class="btn primary" type="submit">Send</button>
+            <p id="formNote" style="margin-top:8px"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footerRow">
+        <span>© <span id="year"></span> ExampleSite</span>
+        <span>Made with HTML + CSS</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const navlinks = document.getElementById("navlinks");
+    menuBtn?.addEventListener("click", () => navlinks.classList.toggle("open"));
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fake form submit
+    function handleSubmit(e){
+      e.preventDefault();
+      const note = document.getElementById("formNote");
+      note.textContent = "✅ Message sent (demo only).";
+      note.style.color = "rgba(0,214,170,.95)";
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
